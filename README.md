@@ -87,7 +87,7 @@ sudo ufw enable
 
 ## 5. Conectando-se ao Servidor SSH
 
-Para conectar-se a partir de outro computador:
+Para conectar-se a partir de outra máquina remota:
 
 ```bash
 ssh usuario@ip_do_servidor
@@ -121,7 +121,65 @@ Para maior segurança, utilize autenticação por chave pública:
    ssh usuario@ip_do_servidor
    ```
 
-## 7. Solução de Problemas
+## 7. Transferindo Arquivos e Pastas entre Máquinas com SSH
+
+O SSH também pode ser usado para copiar arquivos e diretórios entre máquinas usando o `scp` (Secure Copy Protocol) e o `rsync`.
+
+### 7.1 Copiando Arquivos com `scp`
+
+Para copiar um arquivo da máquina local para uma máquina remota:
+
+```bash
+scp arquivo.txt usuario@ip_do_servidor:/caminho/de/destino/
+```
+
+Para copiar um arquivo de uma máquina remota para a máquina local:
+
+```bash
+scp usuario@ip_do_servidor:/caminho/do/arquivo.txt ./
+```
+
+Se a porta SSH foi alterada, use a opção `-P`:
+
+```bash
+scp -P 2222 arquivo.txt usuario@ip_do_servidor:/caminho/de/destino/
+```
+
+### 7.2 Copiando Diretórios com `scp`
+
+Para copiar um diretório inteiro para uma máquina remota:
+
+```bash
+scp -r pasta/ usuario@ip_do_servidor:/caminho/de/destino/
+```
+
+Para copiar um diretório inteiro de uma máquina remota para a máquina local:
+
+```bash
+scp -r usuario@ip_do_servidor:/caminho/da/pasta/ ./
+```
+
+### 7.3 Sincronizando Arquivos com `rsync`
+
+O `rsync` pode ser usado para transferências mais eficientes:
+
+```bash
+rsync -avz arquivo.txt usuario@ip_do_servidor:/caminho/de/destino/
+```
+
+Para sincronizar um diretório local com um remoto:
+
+```bash
+rsync -avz pasta/ usuario@ip_do_servidor:/caminho/de/destino/
+```
+
+Para sincronizar um diretório remoto com um local:
+
+```bash
+rsync -avz usuario@ip_do_servidor:/caminho/da/pasta/ ./
+```
+
+## 8. Solução de Problemas
 
 - **Verifique se o serviço está ativo:**
   ```bash
