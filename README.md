@@ -2,6 +2,8 @@
 
 Este repositório contém um tutorial completo para instalação, configuração, ativação na inicialização, execução e uso do OpenSSH em distribuições baseadas no Ubuntu/Debian.
 
+<img src="/imagens/openssh.png">
+
 ## 1. Instalando o OpenSSH
 
 No Ubuntu/Debian, o OpenSSH pode ser instalado pelo gerenciador de pacotes APT:
